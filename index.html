@@ -40,7 +40,7 @@ footer{padding:30px;text-align:center;font-size:12px;background:var(--ink);color
 .fade{opacity:0;transform:translateY(18px);transition:.8s}.fade.in{opacity:1;transform:none}
 #mus{position:fixed;right:14px;bottom:14px;width:44px;height:44px;border-radius:50%;border:0;background:var(--ink);color:#fff;font-size:18px;display:none;z-index:9}
 .bg{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;height:100vh;pointer-events:none;overflow:hidden;z-index:0}
-.bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1}.hasv .cl,.hasv .st,.hasv .bb{display:none}
 .cl{position:absolute;width:150px;height:46px;background:#fff;border-radius:50px;opacity:.85;filter:blur(1px);animation:dr linear infinite}
 .cl:before,.cl:after{content:"";position:absolute;background:#fff;border-radius:50%}.cl:before{width:62px;height:62px;top:-30px;left:22px}.cl:after{width:80px;height:80px;top:-40px;left:62px}
 .c1{top:10%;animation-duration:60s}.c2{top:42%;transform:scale(.7);animation-duration:80s;animation-delay:-30s}.c3{top:72%;transform:scale(.9);animation-duration:70s;animation-delay:-50s}
@@ -51,7 +51,7 @@ footer{padding:30px;text-align:center;font-size:12px;background:var(--ink);color
 @keyframes up{to{transform:translateY(-115vh) translateX(26px)}}
 @media(prefers-reduced-motion:reduce){.bg *{animation:none!important}}
 </style></head><body><div class="wrap">
-<div class="bg" aria-hidden="true"><video id="bgv" autoplay muted loop playsinline preload="none" onerror="this.remove()"><source src="bg.mp4" type="video/mp4"></video>
+<div class="bg" aria-hidden="true"><video id="bgv" autoplay muted loop playsinline preload="auto" onerror="this.remove()" oncanplay="this.parentNode.classList.add('hasv')"><source src="bg.mp4" type="video/mp4"></video>
  <i class="cl c1"></i><i class="cl c2"></i><i class="cl c3"></i>
  <i class="st" style="left:12%;top:14%"></i><i class="st" style="left:82%;top:22%;animation-delay:.8s"></i><i class="st" style="left:30%;top:60%;animation-delay:1.6s"></i><i class="st" style="left:70%;top:75%;animation-delay:.4s"></i><i class="st" style="left:50%;top:38%;animation-delay:2s"></i>
  <b class="bb" style="left:8%;--d:16s;--s:30px;background:#F6C9C4"></b><b class="bb" style="left:24%;--d:21s;--s:20px;background:#CFE3F2;animation-delay:-6s"></b><b class="bb" style="left:60%;--d:18s;--s:26px;background:#FFE7A8;animation-delay:-3s"></b><b class="bb" style="left:80%;--d:24s;--s:34px;background:#E3D4F0;animation-delay:-11s"></b><b class="bb" style="left:44%;--d:20s;--s:18px;background:#F6C9C4;animation-delay:-14s"></b>
