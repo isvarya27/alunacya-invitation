@@ -133,8 +133,13 @@ function obs(){var o=new IntersectionObserver(function(e){e.forEach(function(x){
 var T=new Date('2026-11-29T12:00:00+07:00');
 setInterval(function(){var d=Math.max(0,T-new Date()),v=[['Hari',864e5],['Jam',36e5],['Menit',6e4],['Detik',1e3]],h='';v.forEach(function(x){h+='<div><b>'+Math.floor(d/x[1])%(x[0]=='Hari'?1e6:x[0]=='Jam'?24:60)+'</b><small>'+x[0]+'</small></div>'});document.getElementById('cd').innerHTML=h},1000);
 // Ucapan: tersimpan di browser ini (demo lokal)
-var K='ucapan-alunacya';function ld(){var w=document.getElementById('wl');w.textContent='';(JSON.parse(localStorage.getItem(K)||'[]')).forEach(function(x){var c=document.createElement('div');c.className='wc';var b=document.createElement('b');b.textContent=x.n;var s=document.createElement('small');s.textContent=x.h;b.appendChild(s);var p=document.createElement('p');p.textContent=x.m;c.appendChild(b);c.appendChild(p);w.appendChild(c)})}
-document.getElementById('f').onsubmit=function(e){e.preventDefault();var n=this.n.value.trim(),m=this.m.value.trim();if(!n||!m)return;var a=JSON.parse(localStorage.getItem(K)||'[]'),h=(document.querySelector('input[name=h]:checked')||{}).value||'';a.unshift({n:n,m:m,h:h});localStorage.setItem(K,JSON.stringify(a));this.m.value='';ld()};ld();
+var SHEET_URL=''; // tempel URL web app Google Apps Script di sini (lihat apps-script.gs); kosong = simpan di browser saja
+var K='ucapan-alunacya';
+function draw(a){var w=document.getElementById('wl');w.textContent='';a.forEach(function(x){var c=document.createElement('div');c.className='wc';var b=document.createElement('b');b.textContent=x.n;var s=document.createElement('small');s.textContent=x.h||'';b.appendChild(s);var p=document.createElement('p');p.textContent=x.m;c.appendChild(b);c.appendChild(p);w.appendChild(c)})}
+function ld(){if(SHEET_URL){fetch(SHEET_URL).then(function(r){return r.json()}).then(draw).catch(function(){})}else draw(JSON.parse(localStorage.getItem(K)||'[]'))}
+document.getElementById('f').onsubmit=function(e){e.preventDefault();var n=this.n.value.trim(),m=this.m.value.trim();if(!n||!m)return;var h=(document.querySelector('input[name=h]:checked')||{}).value||'',f=this;
+if(SHEET_URL){fetch(SHEET_URL,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify({n:n,m:m,h:h})}).then(function(){f.m.value='';ld()}).catch(function(){alert('Gagal mengirim, coba lagi.')})}
+else{var a=JSON.parse(localStorage.getItem(K)||'[]');a.unshift({n:n,m:m,h:h});localStorage.setItem(K,JSON.stringify(a));f.m.value='';ld()}};ld();
 </script>
 <!-- Musik: musik.mp3 (ganti file ini untuk lagu lain) -->
 <audio id="au" src="musik.mp3" loop preload="auto"></audio>
