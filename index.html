@@ -133,7 +133,7 @@ function obs(){var o=new IntersectionObserver(function(e){e.forEach(function(x){
 var T=new Date('2026-11-29T12:00:00+07:00');
 setInterval(function(){var d=Math.max(0,T-new Date()),v=[['Hari',864e5],['Jam',36e5],['Menit',6e4],['Detik',1e3]],h='';v.forEach(function(x){h+='<div><b>'+Math.floor(d/x[1])%(x[0]=='Hari'?1e6:x[0]=='Jam'?24:60)+'</b><small>'+x[0]+'</small></div>'});document.getElementById('cd').innerHTML=h},1000);
 // Ucapan: tersimpan di browser ini (demo lokal)
-var SHEET_URL=''; // tempel URL web app Google Apps Script di sini (lihat apps-script.gs); kosong = simpan di browser saja
+var SHEET_URL='https://script.google.com/macros/s/AKfycbzKkjDI6NAmzF_Xvk8gTOwWsIwpu1I0xKBEXzTOZymNL849ZjbJpMtMfS6QFWocWog/exec'; // tempel URL web app Google Apps Script di sini (lihat apps-script.gs); kosong = simpan di browser saja
 var K='ucapan-alunacya';
 function draw(a){var w=document.getElementById('wl');w.textContent='';a.forEach(function(x){var c=document.createElement('div');c.className='wc';var b=document.createElement('b');b.textContent=x.n;var s=document.createElement('small');s.textContent=x.h||'';b.appendChild(s);var p=document.createElement('p');p.textContent=x.m;c.appendChild(b);c.appendChild(p);w.appendChild(c)})}
 function ld(){if(SHEET_URL){fetch(SHEET_URL).then(function(r){return r.json()}).then(draw).catch(function(){})}else draw(JSON.parse(localStorage.getItem(K)||'[]'))}
