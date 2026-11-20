@@ -120,7 +120,7 @@ if(to)document.getElementById('tamu').textContent=to; // textContent: aman dari 
  Cara 2: tempel link YouTube lagunya di bawah (contoh: https://youtu.be/XXXXXXXXXXX). Jika diisi, YouTube yang dipakai.
  Catatan: YouTube tidak mau tampil dari file:// — jalankan: cd folder ini && python3 -m http.server 8080 lalu buka http://localhost:8080/aqiqah-alunacya.html */
 var LAGU_YOUTUBE='';
-var LAGU_MULAI=60; // detik mulai (reff Komang ≈ 1:00, perkiraan dari volume lagu; ubah bila perlu)
+var LAGU_MULAI=0; // detik mulai: lagu Nikka Costa - First Love, dari awal (bagian "Everyone can't see")
 var yt=null;
 function ytId(u){var m=u.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);return m?m[1]:''}
 function mulaiLagu(){var id=ytId(LAGU_YOUTUBE);
